@@ -7,7 +7,7 @@ handler = proc { |req, res|
   puts res.header
   puts req.unparsed_uri
   if req.unparsed_uri.match(/^http:\/\/www\.ocw\.titech\.ac\.jp\/index\.php\?.*action=DownLoad/)
-    if res.header['filename'].index("pdf")
+    if res.header['content-disposition'].index("pdf")
       res.header['content-type'] = "application/pdf"
     end
   end
